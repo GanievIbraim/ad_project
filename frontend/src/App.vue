@@ -30,6 +30,12 @@
           <v-icon start :icon="link.icon"></v-icon>
           {{ link.title }}
         </v-btn>
+        <v-list-item @click="onLogout" v-if="isUserLoggedIn">
+          <template v-slot:prepend>
+            <v-icon icon="mdi-exit-to-app"></v-icon>
+          </template>
+          <v-list-item-title>Logout</v-list-item-title>
+        </v-list-item>
       </v-toolbar-items>
     </v-app-bar>
     <v-main>
@@ -51,43 +57,50 @@
     data() {
       return {
         drawer: false,
-        links: [{
-            title: "Login",
-            icon: "mdi-lock",
-            url: "/login"
-          },
-          {
-            title: "Registration",
-            icon: "mdi-face",
-            url: "/registration"
-          },
-          {
-            title: "Orders",
-            icon: "mdi-bookmark-multiple-outline",
-            url: "/orders"
-          },
-          {
-            title: "New ad",
-            icon: "mdi-note-plus-outline",
-            url: "/new"
-          },
-          {
-            title: "My ads",
-            icon: "mdi-view-list-outline",
-            url: "/list"
-          }
-        ]
       }
     },
     computed: {
       error() {
         return this.$store.getters.error
+      },
+      links() {
+        if (this.isUserLoggedIn) {
+          return [{
+              title: "Orders",
+              icon: "mdi-bookmark-multiple-outline",
+              url: "/orders"
+            },
+            {
+              title: "New ad",
+              icon: "mdi-note-plus-outline",
+              url: "/new"
+            },
+            {
+              title: "My ads",
+              icon: "mdi-view-list-outline",
+              url: "/list"
+            }
+          ]
+        } else {
+          return [{
+              title: "Login",
+              icon: "mdi-lock",
+              url: "/login"
+            },
+            {
+              title: "Registration",
+              icon: "mdi-face",
+              url: "/registration"
+            },
+          ]
+        }
       }
     },
     methods: {
       closeError() {
         this.$store.dispatch('clearError')
-      }
+      },
+      
     }
   }
 </script>
