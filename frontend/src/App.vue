@@ -100,7 +100,10 @@
       closeError() {
         this.$store.dispatch('clearError')
       },
-      
+      onLogout() {
+        this.$store.dispatch('logoutUser')
+        this.$router.push("/")
+      },
     }
   }
 </script>

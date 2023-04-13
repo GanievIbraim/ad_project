@@ -74,9 +74,9 @@ export default {
                 })
             }
         },
-        logoutUser({commit}) {
-            commit('setUser', null)
-            }
+        logoutUser({commit} ) {
+            commit('setUser',  null)
+        }
     },
 
     getters: {
