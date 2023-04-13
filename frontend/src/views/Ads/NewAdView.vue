@@ -46,24 +46,11 @@
                 valid: false,
                 title: "",
                 description: "",
-                promo: true,
-                actions: {
-                    createAd({
-                        commit
-                    }, payload) {
-                        payload.id = Math.random()
-                        commit('createAd', payload)
-                    }
-                },
-                mutations: {
-                    createAd(state, payload) {
-                        state.ads.push(payload)
-                    }
-                },
+                promo: false
             }
         },
         methods: {
-            ccreateAd() {
+            createAd() {
                 if (this.$refs.form.validate()) {
                     const ad = {
                         title: this.title,
@@ -71,11 +58,9 @@
                         promo: this.promo,
                         src: "https://cdn.vuetifyjs.com/images/cards/cooking.png"
                     }
-                    console.log(ad)
+                    this.$store.dispatch("createAd", ad)
                 }
-            },
-
-
+            }
         }
     }
 </script>
