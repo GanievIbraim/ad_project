@@ -19,7 +19,7 @@
                     </v-card-text>
                     <v-card-actions>
                         <v-spacer></v-spacer>
-                        <v-btn color="primary" @click="onSubmit" :disabled="!valid">
+                        <v-btn color="primary" @click="onSubmit" :loading="loading" :disabled="!valid || loading">
                             Login
                         </v-btn>
                     </v-card-actions>
@@ -46,16 +46,9 @@
                 ]
             }
         },
+        
         methods: {
-            onSubmit() {
-                if (this.$refs.form.validate()) {
-                    const user = {
-                        email: this.email,
-                        password: this.password
-                    }
-                    console.log(user)
-                }
-            }
+            
         }
     }
 </script>

@@ -28,7 +28,6 @@ export default {
                 src: "https://cdn.vuetifyjs.com/images/carousel/planet.jpg",
                 id: "4"
             }
-
         ]
     },
     mutations: {
@@ -43,6 +42,7 @@ export default {
             payload.id = Math.random()
             commit('createAd', payload)
         }
+
     },
     getters: {
         ads(state) {
@@ -61,6 +61,5 @@ export default {
                 return state.ads.find(ad => ad.id == id)
             }
         }
-
     }
 }
