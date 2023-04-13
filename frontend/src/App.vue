@@ -80,14 +80,14 @@
       }
     },
     computed: {
-      error() {
-        return this.$store.getters.error
-      }
-    },
-    methods: {
-      closeError() {
-        this.$store.dispatch('clearError')
-      }
+    error () {
+      return this.$store.getters.error
+   }
+},
+methods: {
+    closeError () {
+      this.$store.dispatch('clearError')
     }
+ }
   }
 </script>
